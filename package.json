@@ -1,0 +1,69 @@
+{
+  "name": "metriclog",
+  "version": "1.0.0",
+  "description": "an ethereum app",
+  "main": "index.js",
+  "engines": {
+    "node": "14.18.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sequelize db:migrate && node app.js",
+    "dev": "NODE_ENV=development nodemon --exec node app.js",
+    "client": "cd client && npm install && npm run build",
+    "dev:client": "cd client && npm start",
+    "start:dev": "concurrently \"npm run server\" \"npm run dev:client\"",
+    "migrate": "npx sequelize-cli db:migrate",
+    "dbreset": "npm run unmigrate && npm run migrate",
+    "rollback": "npx sequelize-cli db:migrate:undo",
+    "lint": "eslint --fix server/",
+    "format": "npx prettier --write ."
+  },
+  "author": "PascalUlor",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@hapi/joi-date": "^2.0.1",
+    "app-root-path": "^3.0.0",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jest": "^27.3.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.8.0",
+    "sequelize-cli": "^6.2.0",
+    "winston": "^3.3.3"
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*"
+    ],
+    "ext": "js, json"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PascalUlor/metriclog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PascalUlor/metriclog/issues"
+  },
+  "homepage": "https://github.com/PascalUlor/metriclog#readme"
+}
